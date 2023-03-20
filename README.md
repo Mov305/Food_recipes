@@ -97,7 +97,13 @@ rails s
 - Twitter: [@Mov305](https://twitter.com/Mov_abd)
 - LinkedIn: [@Mov305](https://www.linkedin.com/in/abdelrhman-samy-80b14b215/)
 
-👤 **Benjamin**
+👤 **Benjamin Ejike**
+
+- GitHub: [@githubhandle](https://github.com/osbentech)
+- Twitter: [@twitterhandle](https://twitter.com/EjikeOsegbo)
+- LinkedIn: [LinkedIn](www.linkedin.com/in/benjamin-ejike-632248206)
+
+
 
 
 <p align="right">([back to top](#readme-top))</p>
