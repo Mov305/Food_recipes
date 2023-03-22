@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# Create a main sample user.
+main_user = User.first 
+# create a recipe for the main user
+Recipe.create!(name: "Example", user: main_user, preparation_time: 10, cooking_time: 10, description: "This is an example recipe", public: true)
