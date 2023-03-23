@@ -2,6 +2,7 @@ class RecipeController < ApplicationController
   def index
     # Get all the user's recipes
     @recipes = Recipe.where(user_id: current_user.id)
+    @owner = current_user
   end
 
   def show
@@ -27,6 +28,18 @@ class RecipeController < ApplicationController
     end
   end
 
+  def destroy
+    # Get the recipe
+    @recipe = Recipe.find(params[:id])
+    if @recipe.destroy
+      flash[:notice] = "Recipe was successfully deleted."
+    else
+      flash[:error] = "There was an error deleting the recipe."
+    end
+    redirect_to recipe_path
+  end
+
+
   def general_shopping_list
     # Find all food recipes for the current user but the FoodRcipe does not have a user_id
     @foods = RecipeFood.where(recipe_id: Recipe.where(user_id: current_user.id).pluck(:id)).includes(:food)
@@ -35,6 +48,13 @@ class RecipeController < ApplicationController
       @total_price += food.food.price * food.quantity
     end
   end
+
+  def public_recipes
+    # Get all the public The public recipes or the recipes that the user created
+    @recipes = Recipe.where("public = ? OR user_id = ?", true, current_user.id)
+    @owner = current_user
+  end
+
 
   private
 

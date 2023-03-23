@@ -23,6 +23,7 @@ class FoodController < ApplicationController
   
     if @food.destroy
       flash[:notice] = "Food was successfully deleted."
+      redirect_to root_path
     else
       flash[:error] = "There was an error deleting the food."
       render :show, status: 400
@@ -31,6 +32,6 @@ class FoodController < ApplicationController
   
   private
     def food_params
-      params.require(:food).permit(:name)
+      params.require(:food).permit(:name, :price, :quantity, :measurement_unit)
     end
 end

@@ -1,4 +1,4 @@
-<blockquote class="flex h-full flex-col justify-between bg-white p-12 hover:shadow-lg">
+<blockquote class="flex h-full flex-col justify-between bg-white p-10 hover:shadow-lg">
   <%= link_to recipe_path(recipe) do %>
   <div>
     <div class="mt-4">
@@ -8,8 +8,15 @@
     </div>
   </div>
   <% end %>
+  <div class="flex h-10">
+    <% if @owner.id == recipe.user_id %>
 
-  <footer class="mt-8 text-gray-500 hover:text-red-500 cursor-pointer text-right">
-    Delete Recipe
-  </footer>
+    <footer class=" mt-2 flex-1 text-gray-500 hover:text-red-500 cursor-pointer flex justify-end">
+      <%= link_to "Delete Recipe", recipe_path(id: recipe.id), data: { turbo_method: :delete },
+      class:"block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white h-fit-content
+      hover:bg-indigo-700" %>
+    </footer>
+
+    <% end %>
+  </div>
 </blockquote>

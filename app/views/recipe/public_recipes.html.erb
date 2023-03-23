@@ -1,0 +1,17 @@
+<section class="bg-gray-100">
+  <div class="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="items-end justify-between sm:flex">
+      <div class="max-w-xl">
+        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Public Recipes</h2>
+
+        <p class="mt-8 max-w-lg text-gray-500">
+          These are the recipes that are public. You can view them and add them to your shopping list.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 gap-4  lg:grid-cols-2">
+      <% @recipes.each do |recipe| %> <%= render "shared/recipe_card", recipe: recipe %> <% end %>
+    </div>
+  </div>
+</section>

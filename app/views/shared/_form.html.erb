@@ -5,13 +5,19 @@
     </div>
 
     <div class="form-group">
-        <%= form.label :Measurement_unit %>
-        <%= form.text_field :measurement_unit %>
+        <%= form.label :quantity %>
+        <%= form.number_field :quantity %>
     </div>
 
     <div class="form-group">
+        <%= form.label :measurement_unit %>
+        <%= form.text_field :measurement_unit %>
+    </div>
+    
+
+    <div class="form-group">
         <%= form.label :price %>
-        <%= form.text_field :price %>
+        <%= form.number_field :price %>
     </div>
 
     <%= form.submit "Create food", class: "submit-form" %>

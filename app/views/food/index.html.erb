@@ -1,37 +1,46 @@
-<section class="bg-gray-100 min-h-screen">
+<section class="bg-gray-100 min-h-screen py-5 p-2">
+  <div class="flex justify-end m-5">
+    <%= link_to new_food_path() do %>
+    <div
+      class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+    >
+      Add food
+    </div>
+    <% end %>
+  </div>
 
-  <button type="button" class="add-btn">
-  <%= link_to "Add food", new_food_path() %></button>
-  
-  <div class="form">
-    <table class="min-w-full divide-y-2 divide-gray-500 text-sm bg-slate-50 rounded-lg">
-      <thead>
-        <tr id="form_list" >
-          <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Food</th>
-          <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-            Measurement_unit(g)
-          </th>
-          <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900" >Unit_price($)</th>
-          <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-            Actions
-          </th>
-          <th class="px-4 py-2"></th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-200">
-        <% @foods.each do |food| %>
+  <div class="p-4">
+    <div class="form">
+      <table class="min-w-full divide-y-2 divide-gray-500 text-sm bg-slate-50 rounded-lg">
+        <thead>
+          <tr id="form_list">
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Food</th>
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+              Measurement Unit
+            </th>
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+              Unit Price
+            </th>
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <% @foods.each do |food| %>
           <tr>
-            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-              <%= food.name %>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"><%= food.name %></td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+              <%= food.quantity %> <%= food.measurement_unit %>
             </td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700"><%= food.measurement_unit %></td>
             <td class="whitespace-nowrap px-4 py-2 text-gray-700"><%= food.price %></td>
             <td>
-              <%= link_to "Remove", food_path(id: food.id), data: { turbo_method: :delete } %>
+              <%= link_to "Remove", food_path(id: food.id), data: { turbo_method: :delete },
+              class:"inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white
+              hover:bg-indigo-700" %>
             </td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
