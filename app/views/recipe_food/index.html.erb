@@ -1,0 +1,44 @@
+<!-- The list of foods -->
+<section class="bg-gray-100 min-h-screen">
+  <div class="flex flex-col items-center">
+    <div class="items-end justify-between sm:flex">
+      <div class="max-w-xl">
+        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">All your Foods</h2>
+
+        <p class="mt-8 max-w-lg text-gray-500">
+          These are the Food items you have in your pantry. You can add them to your recipes.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 flex p-5 w-full">
+      <table class="min-w-full divide-y-2 divide-gray-500 text-sm bg-slate-50 rounded-lg">
+        <thead>
+          <tr>
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Food</th>
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+              Quantity
+            </th>
+            <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <% @foods.each do |food| %> <%= form_with model:@recipe_food ,url: recipe_recipe_food_index_path(@recipe.id) ,
+          method: :post do |f| %>
+          <tr>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"><%= food.name %></td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+              <%= f.hidden_field :food_id, value: food.id %>
+              <%= f.number_field :quantity %>
+            </td>
+            <td class="whitespace-nowrap px-4 py-2">
+              <%= f.submit "Add", class: "inline-block rounded bg-indigo-600 px-4 py-2 text-xs
+              font-medium text-white hover:bg-indigo-700" %>
+            </td>
+          </tr>
+          <% end %> <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

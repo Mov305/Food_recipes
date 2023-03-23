@@ -23,13 +23,14 @@
           >
             Generate shopping list
           </div>
-          <% end %>
+          <% end %> <%= link_to recipe_recipe_food_index_path(@recipe) do %>
 
           <div
             class="mt-8 inline-block rounded bg-indigo-600 p-2 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
           >
             Add ingredients
           </div>
+          <% end %>
         </div>
       </div>
 
@@ -63,11 +64,10 @@
                 <%= recipe_food.food.price.to_i * recipe_food.quantity.to_i %> $
               </td>
               <td class="whitespace-nowrap px-4 py-2">
-                <div
-                  class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-                >
-                  Remove
-                </div>
+                <%= link_to "Remove",
+                recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id), data: {
+                turbo_method: :delete }, class:"inline-block rounded bg-indigo-600 px-4 py-2 text-xs
+                font-medium text-white hover:bg-indigo-700" %>
               </td>
             </tr>
             <% end %>
