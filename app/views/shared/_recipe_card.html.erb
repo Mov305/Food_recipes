@@ -1,0 +1,15 @@
+<blockquote class="flex h-full flex-col justify-between bg-white p-12 hover:shadow-lg">
+  <%= link_to recipe_path(recipe) do %>
+  <div>
+    <div class="mt-4">
+      <h3 class="text-xl font-bold text-pink-600 sm:text-2xl"><%= recipe.name %></h3>
+
+      <p class="mt-4 text-gray-600"><%= recipe.description.truncate(150) %></p>
+    </div>
+  </div>
+  <% end %>
+
+  <footer class="mt-8 text-gray-500 hover:text-red-500 cursor-pointer text-right">
+    Delete Recipe
+  </footer>
+</blockquote>
