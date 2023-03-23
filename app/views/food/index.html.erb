@@ -27,7 +27,7 @@
             <td class="whitespace-nowrap px-4 py-2 text-gray-700"><%= food.measurement_unit %></td>
             <td class="whitespace-nowrap px-4 py-2 text-gray-700"><%= food.price %></td>
             <td>
-              <%= button_to "Remove", @food, method: :delete %>
+              <%= link_to "Remove", food_path(id: food.id), data: { turbo_method: :delete } %>
             </td>
           </tr>
         <% end %>

@@ -1,6 +1,4 @@
 class FoodController < ApplicationController
-  before_action :set_food, only: %i[show edit update destroy]
-
   def index
     @foods = Food.where(user_id: current_user.id)
   end
@@ -22,7 +20,6 @@ class FoodController < ApplicationController
 
   def destroy
     @food = Food.find(params[:id])
-    authorize! :destroy, @food
   
     if @food.destroy
       flash[:notice] = "Food was successfully deleted."
