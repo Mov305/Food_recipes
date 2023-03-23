@@ -1,0 +1,47 @@
+<section class="bg-gray-100 min-h-screen">
+  <div class="max-w-screen-xl py-4 sm:py-6 px-4 mx-auto sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-y-8 items-center lg:gap-x-16">
+      <div class="mx-auto max-w-lg text-center lg:mx-0">
+        <h2 class="text-3xl font-bold sm:text-4xl">Shopping List</h2>
+
+        <div class="flex flex-col mt-6 gap-4">
+          <h3 class="text-sm">Total price: <%= @total_price %> $</h3>
+          <h3 class="text-sm">Amount of food items to buy: <%= @foods.length() %></h3>
+        </div>
+      </div>
+
+      <% if @foods %>
+      <div class="sm:pt-10 w-full sm:mt-12">
+        <table class="min-w-full divide-y-2 divide-gray-500 text-sm bg-slate-50 rounded-lg">
+          <thead>
+            <tr>
+              <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Food</th>
+              <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                Quantity
+              </th>
+              <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">Price</th>
+            </tr>
+          </thead>
+
+          <tbody class="divide-y divide-gray-200">
+            <% @foods.each do |recipe_food| %>
+            <tr>
+              <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <%= recipe_food.food.name %>
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                <%= recipe_food.food.quantity.to_i * recipe_food.quantity.to_i %> <%=
+                recipe_food.food.measurement_unit %>
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                <%= recipe_food.food.price.to_i * recipe_food.quantity.to_i %> $
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
