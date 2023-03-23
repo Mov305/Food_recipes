@@ -4,11 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: "food#index"
-  resources "recipe",:path => "recipes" , only: [:index, :show, :new, :create, :destroy]
+  resources "recipe", :path => "recipes", only: [:index, :show, :new, :create, :destroy]
+  # Defines a route called "general_shopping_list" that will be available at "/general_shopping_list"
+  get "general_shopping_list", to: "recipe#general_shopping_list"
 
   # Defines a route called "public_recipes" that will be available at "/public_recipes"
-  get "public_recipes", to: "recipes#public_recipes"
-
-  # Defines a route called "general_shopping_list" that will be available at "/general_shopping_list"
-  get "general_shopping_list", to: "recipes#general_shopping_list"
+  get "public_recipes", to: "recipe#public_recipes"
 end

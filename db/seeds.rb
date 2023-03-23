@@ -10,3 +10,8 @@
 main_user = User.first 
 # create a recipe for the main user
 Recipe.create!(name: "Example", user: main_user, preparation_time: 10, cooking_time: 10, description: "This is an example recipe", public: true)
+# create a food for the main user
+Food.create!(name: "Example", user: main_user, price: 10, measurement_unit: "kg")
+
+# Generate a bunch of additional users.
+RecipeFood.create!(recipe_id: 1, food_id: 1, quantity: 1)
