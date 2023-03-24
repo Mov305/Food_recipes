@@ -5,7 +5,7 @@ RSpec.describe Recipe, type: :model do
   subject do
     Recipe.new(
       name: 'Chicken Masala',
-      preparation_unit: 'kg',
+      preparation_time: 100,
       cooking_time: 3,
       description: 'This is how we cook chicken masala',
       public: false,
@@ -20,11 +20,11 @@ RSpec.describe Recipe, type: :model do
   end
 
   it 'Preparation time to be string' do
-    expect(subject.preparation_unit).to be_a(String)
+    expect(subject.preparation_time).to be_a(Integer)
   end
 
   it 'Preparation unit to be kg' do
-    expect(subject.preparation_unit).to eql('kg')
+    expect(subject.preparation_time).to eql(100)
   end
 
   it 'Cooking time to be 10' do
