@@ -8,6 +8,7 @@ class RecipeController < ApplicationController
   def show
     # Get the recipe
     @recipe = Recipe.find(params[:id])
+    @owner = current_user
   end
 
   def new
@@ -26,6 +27,18 @@ class RecipeController < ApplicationController
     else
       redirect_to new_recipe_path
     end
+  end
+
+  def update
+    # Get the recipe and toggle the public attribute
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = !@recipe.public
+    if @recipe.save
+      flash[:notice] = "Recipe was successfully updated."
+    else
+      flash[:error] = "There was an error updating the recipe."
+    end
+    redirect_to recipe_path
   end
 
   def destroy

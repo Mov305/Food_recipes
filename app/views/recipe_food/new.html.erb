@@ -23,20 +23,21 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-          <% @foods.each do |food| %> <%= form_with model:@recipe_food ,url: recipe_recipe_food_index_path(@recipe.id) ,
-          method: :post do |f| %>
+          <% @foods.each do |food| %>
           <tr>
+            <%= form_with model:@recipe_food ,url: recipe_recipe_food_index_path(@recipe.id) ,
+            method: :post do |f| %>
             <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"><%= food.name %></td>
             <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-              <%= f.hidden_field :food_id, value: food.id %>
-              <%= f.number_field :quantity %>
+              <%= f.hidden_field :food_id, value: food.id %> <%= f.number_field :quantity %>
             </td>
             <td class="whitespace-nowrap px-4 py-2">
               <%= f.submit "Add", class: "inline-block rounded bg-indigo-600 px-4 py-2 text-xs
               font-medium text-white hover:bg-indigo-700" %>
             </td>
+            <% end %>
           </tr>
-          <% end %> <% end %>
+          <% end %>
         </tbody>
       </table>
     </div>
