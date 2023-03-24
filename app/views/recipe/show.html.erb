@@ -5,9 +5,14 @@
         <div class="flex justify-between">
           <h2 class="text-3xl font-bold sm:text-4xl"><%= @recipe.name %></h2>
 
+          <% if @recipe.user_id == @owner.id %>
           <h3 class="mt-2 mr-8">
-            Public: <span class="ml-4"> <%= render "shared/public", recipe: @recipe %></span>
+            Public: 
+            <%= link_to recipe_path(@recipe), data: { turbo_method: "PUT"} do %>
+            <span class="ml-4"> <%= render "shared/public", recipe: @recipe %></span>
+            <% end %>
           </h3>
+          <% end %>
         </div>
 
         <p class="mt-4 text-gray-600"><%= @recipe.description %></p>
@@ -17,20 +22,21 @@
         <h3 class="text-sm">Cooking time: <%= @recipe.cooking_time / 60 %> minutes</h3>
 
         <div class="flex justify-between gap-4">
-          <%= link_to general_shopping_list_path do %>
+          <%= link_to general_shopping_list_path  do %>
           <div
             class="mt-8 inline-block rounded bg-indigo-600 p-2 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
           >
             Generate shopping list
           </div>
-          <% end %> <%= link_to recipe_recipe_food_index_path(@recipe) do %>
+          <% end %>
 
-          <div
+          <a
+            href = <%= new_recipe_recipe_food_path(@recipe) %>
+            data-turbo= "false"
             class="mt-8 inline-block rounded bg-indigo-600 p-2 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
           >
             Add ingredients
-          </div>
-          <% end %>
+        </a>
         </div>
       </div>
 

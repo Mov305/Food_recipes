@@ -8,6 +8,7 @@ class RecipeController < ApplicationController
   def show
     # Get the recipe
     @recipe = Recipe.find(params[:id])
+    @owner = current_user
   end
 
   def new
@@ -28,17 +29,28 @@ class RecipeController < ApplicationController
     end
   end
 
-  def destroy
-    # Get the recipe
+  def update
+    # Get the recipe and toggle the public attribute
     @recipe = Recipe.find(params[:id])
-    if @recipe.destroy
-      flash[:notice] = "Recipe was successfully deleted."
+    @recipe.public = !@recipe.public
+    if @recipe.save
+      flash[:notice] = 'Recipe was successfully updated.'
     else
-      flash[:error] = "There was an error deleting the recipe."
+      flash[:error] = 'There was an error updating the recipe.'
     end
     redirect_to recipe_path
   end
 
+  def destroy
+    # Get the recipe
+    @recipe = Recipe.find(params[:id])
+    if @recipe.destroy
+      flash[:notice] = 'Recipe was successfully deleted.'
+    else
+      flash[:error] = 'There was an error deleting the recipe.'
+    end
+    redirect_to recipe_path
+  end
 
   def general_shopping_list
     # Find all food recipes for the current user but the FoodRcipe does not have a user_id
@@ -51,7 +63,7 @@ class RecipeController < ApplicationController
 
   def public_recipes
     # Get all the public The public recipes or the recipes that the user created
-    @recipes = Recipe.where("public = ? OR user_id = ?", true, current_user.id)
+    @recipes = Recipe.where('public = ? OR user_id = ?', true, current_user.id)
     @owner = current_user
   end
 

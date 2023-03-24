@@ -9,7 +9,9 @@
 .form-group {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: right;
+  margin-right: 30rem;
+  gap: 4rem;
   margin-top: 2rem;
 }
 
@@ -27,27 +29,38 @@
   text-align: start;
 }
 
-.back {
-  border: 2px solid black;
-  border-radius: 3px;
-  background-color: rgb(106, 106, 221);
-  margin: 5px;
+.button-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3rem;
 }
 
-.back:hover {
-  color: blue;
-  cursor: pointer;
+.back {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 3px;
+  background-color: blue;
+  margin-top: 35px;
+  color: white;
+  font-size: 14px;
 }
 
 .submit-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 35px;
   border: 2px solid black;
   border-radius: 3px;
-  background-color: rgb(106, 106, 221);
-  margin: 5px;
+  background-color: blue;
+  color: white;
+  font-size: 14px;
 }
 
-.submit-form:hover {
-  color: blue;
+.button-links:hover {
   cursor: pointer;
 }
 

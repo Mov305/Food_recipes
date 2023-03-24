@@ -1,0 +1,36 @@
+<header aria-label="Site Header" class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-center">
+      <div class="md:flex md:items-center md:gap-12">
+        <nav aria-label="Site Nav" class="">
+          <ul class="flex items-center gap-6 text-sm justify-between">
+            <li>
+              <%= link_to "Foods", food_index_path, class: "text-gray-500 transition
+              hover:text-gray-500/75" %>
+            </li>
+
+            <li>
+              <%= link_to "Recipes", recipe_index_path, class: "text-gray-500 transition
+              hover:text-gray-500/75" %>
+            </li>
+
+            <li>
+              <%= link_to "Shopping List", general_shopping_list_path, class: "text-gray-500 transition
+              hover:text-gray-500/75" %>
+            </li>
+
+            <li>
+              <%= link_to "Public Recipes", public_recipes_path, class: "text-gray-500 transition
+              hover:text-gray-500/75" %>
+            </li>
+
+            <li>
+              <%= link_to "Create New Recipe", new_recipe_path, class: "text-gray-50 transition bg-violet-500 hover:bg-violet-700 hover:text-white px-4 py-2 rounded-md text-sm 
+              hover:text-gray-500/75" %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

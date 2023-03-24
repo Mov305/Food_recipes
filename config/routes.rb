@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # Defines a route called "public_recipes" that will be available at "/public_recipes"
   get "public_recipes", to: "recipe#public_recipes"
 
-  resources "recipe", :path => "recipes", only: [:index, :show, :new, :create, :destroy] do
-    resources "recipe_food", only: [:index, :create, :destroy]
+  resources "recipe", :path => "recipes", only: [:index, :show, :new, :create, :update, :destroy] do
+    resources "recipe_food", only: [:new, :create, :destroy]
   end
   resources "food", :path => "foods", only: [:index, :new, :create, :destroy]
   resources :users
