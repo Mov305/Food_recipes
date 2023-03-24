@@ -9,7 +9,9 @@
 .form-group {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: right;
+  margin-right: 30rem;
+  gap: 4rem;
   margin-top: 2rem;
 }
 
@@ -30,24 +32,26 @@
 .back {
   border: 2px solid black;
   border-radius: 3px;
-  background-color: rgb(106, 106, 221);
+  background-color: blue;
   margin: 5px;
+  color: white;
+  font-size: 14px;
 }
 
 .back:hover {
-  color: blue;
   cursor: pointer;
 }
 
 .submit-form {
   border: 2px solid black;
   border-radius: 3px;
-  background-color: rgb(106, 106, 221);
+  background-color: blue;
   margin: 5px;
+  color: white;
+  font-size: 14px;
 }
 
 .submit-form:hover {
-  color: blue;
   cursor: pointer;
 }
 
