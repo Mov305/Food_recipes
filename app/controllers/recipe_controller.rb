@@ -67,7 +67,6 @@ class RecipeController < ApplicationController
     @owner = current_user
   end
 
-
   private
 
   def recipe_params
