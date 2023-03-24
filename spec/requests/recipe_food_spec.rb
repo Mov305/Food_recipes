@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "RecipeFoods", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+RSpec.describe Recipe, type: :model do
+  user = User.create(name: 'Emmanuel', email: 'abc@abc.com')
+  subject do
+    Recipe.new(
+    )
   end
-end
+ 

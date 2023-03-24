@@ -18,7 +18,8 @@
         <%= form.label :price %>
         <%= form.number_field :price %>
     </div>
-
-    <%= form.submit "Create food", class: "submit-form" %>
-
+    <div class="form-group">
+      <%= form.submit "Create food", class: "submit-form" %>
+       <button class="back"><%=link_to 'Back to foods', root_path %></button>
+    </div>
 <% end %>
