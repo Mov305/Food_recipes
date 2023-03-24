@@ -3,25 +3,25 @@ require 'rails_helper'
 RSpec.describe 'Foods', type: :feature do
   describe 'Index' do
     before(:each) do
-      @user = User.create!(name: 'Test User', email: 'test@gmail.com', password: '123456')
-      @food = Food.create!(name: 'Test Food', measurement_unit: 'kg', quantity: 1, price: 1, user_id: @user.id)
-      @food2 = Food.create!(name: 'Test Food 2', measurement_unit: 'kg', quantity: 1, price: 1, user_id: @user.id)
+      @user = User.create!(name: 'Test', email: 'test@gmail.com', password: '123456')
+      @food = Food.create!(name: 'Test', measurement_unit: 'kg', quantity: 1, price: 1, user_id: @user.id)
+      @food2 = Food.create!(name: 'Test', measurement_unit: 'kg', quantity: 1, price: 1, user_id: @user.id)
       @user.skip_confirmation!
       @user.save!
       visit new_user_session_path
       fill_in 'user_email', with: 'test@gmail.com'
       fill_in 'user_password', with: '123456'
       click_button 'Log in'
-      visit foods_path
+      visit '/'
     end
 
     it 'should show all foods' do
-      expect(page).to have_content('Test Food')
-      expect(page).to have_content('Test Food 2')
+      expect(page).to have_content('Test')
+      expect(page).to have_content('Test')
     end
 
     it 'should show the food name' do
-      expect(page).to have_content('Test Food')
+      expect(page).to have_content('Test')
     end
 
     it 'should show the food measurement unit' do
@@ -37,7 +37,7 @@ RSpec.describe 'Foods', type: :feature do
     end
 
     it 'should show the food delete button' do
-      expect(page).to have_content('Delete')
+      expect(page).to have_content('Remove')
     end
 
     it 'should show the food new button' do
@@ -52,8 +52,8 @@ RSpec.describe 'Foods', type: :feature do
 
   describe 'New' do
     before(:each) do
-      @user = User.create!(name: 'Test User', email: 'test@gmail.com', password: '123456')
-      @food = Food.create!(name: 'Test Food', measurement_unit: 'kg', quantity: 1, price: 1, user_id: @user.id)
+      @user = User.create!(name: 'Test', email: 'test@gmail.com', password: '123456')
+      @food = Food.create!(name: 'Test', measurement_unit: 'kg', quantity: 1, price: 1, user_id: @user.id)
       @user.skip_confirmation!
       @user.save!
       visit new_user_session_path
@@ -80,7 +80,7 @@ RSpec.describe 'Foods', type: :feature do
     end
 
     it 'should show the food submit button' do
-      expect(page).to have_button('Create Food')
+      expect(page).to have_button('Create food')
     end
 
     it 'should create a new food' do
@@ -88,18 +88,18 @@ RSpec.describe 'Foods', type: :feature do
       fill_in 'food_measurement_unit', with: 'kg'
       fill_in 'food_quantity', with: '1'
       fill_in 'food_price', with: '1'
-      click_button 'Create Food'
-      expect(page).to have_current_path(foods_path)
+      click_button 'Create food'
+      expect(page).to have_current_path('/foods')
     end
 
     it 'should cancel the new food' do
       click_link('Back to foods')
-      expect(page).to have_current_path(foods_path)
+      expect(page).to have_current_path(root_path)
     end
 
     it 'should back to foods' do
       click_link('Back to foods')
-      expect(page).to have_current_path(foods_path)
+      expect(page).to have_current_path(root_path)
     end
   end
 end

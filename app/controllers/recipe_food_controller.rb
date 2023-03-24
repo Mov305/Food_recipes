@@ -13,25 +13,25 @@ class RecipeFoodController < ApplicationController
     p @recipe_food
     if @recipe_food.save
       redirect_to recipe_path(params[:recipe_id])
-      flash[:notice] = "Recipe food was successfully created."
+      flash[:notice] = 'Recipe food was successfully created.'
     else
       redirect_to new_recipe_recipe_food_path(params[:recipe_id])
       # reload the page
 
       respond_to do |format|
-        format.js {render inline: "location.reload();"}
+        format.js { render inline: 'location.reload();' }
       end
 
-      flash[:error] = "There was an error creating the recipe food."
+      flash[:error] = 'There was an error creating the recipe food.'
     end
   end
 
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
     if @recipe_food.destroy
-      flash[:notice] = "Recipe food was successfully deleted."
+      flash[:notice] = 'Recipe food was successfully deleted.'
     else
-      flash[:error] = "There was an error deleting the recipe food."
+      flash[:error] = 'There was an error deleting the recipe food.'
     end
     redirect_to recipe_path(params[:recipe_id])
   end
